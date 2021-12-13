@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test.helper import gettestcases
 
-from youtube_dl.extractor import (
+from nextdl.extractor import (
     FacebookIE,
     gen_extractors,
     YoutubeIE,
@@ -68,7 +68,7 @@ class TestAllURLsMatching(unittest.TestCase):
 
     # def test_youtube_search_matching(self):
     #     self.assertMatch('http://www.youtube.com/results?search_query=making+mustard', ['youtube:search_url'])
-    #     self.assertMatch('https://www.youtube.com/results?baz=bar&search_query=youtube-dl+test+video&filters=video&lclk=video', ['youtube:search_url'])
+    #     self.assertMatch('https://www.youtube.com/results?baz=bar&search_query=nextdl+test+video&filters=video&lclk=video', ['youtube:search_url'])
 
     def test_facebook_matching(self):
         self.assertTrue(FacebookIE.suitable('https://www.facebook.com/Shiniknoh#!/photo.php?v=10153317450565268'))
@@ -99,7 +99,7 @@ class TestAllURLsMatching(unittest.TestCase):
         self.assertMatch('https://vimeo.com/user7108434/videos', ['vimeo:user'])
         self.assertMatch('https://vimeo.com/user21297594/review/75524534/3c257a1b5d', ['vimeo:review'])
 
-    # https://github.com/ytdl-org/youtube-dl/issues/1930
+    # https://github.com/nextdl/nextdl/issues/1930
     def test_soundcloud_not_matching_sets(self):
         self.assertMatch('http://soundcloud.com/floex/sets/gone-ep', ['soundcloud:set'])
 
@@ -108,7 +108,7 @@ class TestAllURLsMatching(unittest.TestCase):
         self.assertMatch('http://tatianamaslanydaily.tumblr.com/post/54196191430', ['Tumblr'])
 
     def test_pbs(self):
-        # https://github.com/ytdl-org/youtube-dl/issues/2350
+        # https://github.com/nextdl/nextdl/issues/2350
         self.assertMatch('http://video.pbs.org/viralplayer/2365173446/', ['pbs'])
         self.assertMatch('http://video.pbs.org/widget/partnerplayer/980042464/', ['pbs'])
 

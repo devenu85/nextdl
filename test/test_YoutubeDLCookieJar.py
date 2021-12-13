@@ -10,27 +10,27 @@ import tempfile
 import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from youtube_dl.utils import YoutubeDLCookieJar
+from nextdl.utils import nextdlCookieJar
 
 
-class TestYoutubeDLCookieJar(unittest.TestCase):
+class TestnextdlCookieJar(unittest.TestCase):
     def test_keep_session_cookies(self):
-        cookiejar = YoutubeDLCookieJar('./test/testdata/cookies/session_cookies.txt')
+        cookiejar = nextdlCookieJar('./test/testdata/cookies/session_cookies.txt')
         cookiejar.load(ignore_discard=True, ignore_expires=True)
         tf = tempfile.NamedTemporaryFile(delete=False)
         try:
             cookiejar.save(filename=tf.name, ignore_discard=True, ignore_expires=True)
             temp = tf.read().decode('utf-8')
             self.assertTrue(re.search(
-                r'www\.foobar\.foobar\s+FALSE\s+/\s+TRUE\s+0\s+YoutubeDLExpiresEmpty\s+YoutubeDLExpiresEmptyValue', temp))
+                r'www\.foobar\.foobar\s+FALSE\s+/\s+TRUE\s+0\s+nextdlExpiresEmpty\s+nextdlExpiresEmptyValue', temp))
             self.assertTrue(re.search(
-                r'www\.foobar\.foobar\s+FALSE\s+/\s+TRUE\s+0\s+YoutubeDLExpires0\s+YoutubeDLExpires0Value', temp))
+                r'www\.foobar\.foobar\s+FALSE\s+/\s+TRUE\s+0\s+nextdlExpires0\s+nextdlExpires0Value', temp))
         finally:
             tf.close()
             os.remove(tf.name)
 
     def test_strip_httponly_prefix(self):
-        cookiejar = YoutubeDLCookieJar('./test/testdata/cookies/httponly_cookies.txt')
+        cookiejar = nextdlCookieJar('./test/testdata/cookies/httponly_cookies.txt')
         cookiejar.load(ignore_discard=True, ignore_expires=True)
 
         def assert_cookie_has_value(key):
@@ -40,7 +40,7 @@ class TestYoutubeDLCookieJar(unittest.TestCase):
         assert_cookie_has_value('JS_ACCESSIBLE_COOKIE')
 
     def test_malformed_cookies(self):
-        cookiejar = YoutubeDLCookieJar('./test/testdata/cookies/malformed_cookies.txt')
+        cookiejar = nextdlCookieJar('./test/testdata/cookies/malformed_cookies.txt')
         cookiejar.load(ignore_discard=True, ignore_expires=True)
         # Cookies should be empty since all malformed cookie file entries
         # will be ignored

@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from test.helper import FakeYDL
 
 
-from youtube_dl.extractor import (
+from nextdl.extractor import (
     YoutubePlaylistIE,
     YoutubeTabIE,
     YoutubeIE,
@@ -71,7 +71,7 @@ class TestYoutubeLists(unittest.TestCase):
         self.assertEqual(video['ie_key'], 'Youtube')
         self.assertEqual(video['id'], 'BaW_jenozKc')
         self.assertEqual(video['url'], 'BaW_jenozKc')
-        self.assertEqual(video['title'], 'youtube-dl test video "\'/\\ä↭𝕐')
+        self.assertEqual(video['title'], 'nextdl test video "\'/\\ä↭𝕐')
         self.assertEqual(video['duration'], 10)
         self.assertEqual(video['uploader'], 'Philipp Hagemeister')
 

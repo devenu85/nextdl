@@ -1,18 +1,18 @@
-Using the ``youtube_dl`` module
+Using the ``nextdl`` module
 ===============================
 
-When using the ``youtube_dl`` module, you start by creating an instance of :class:`YoutubeDL` and adding all the available extractors:
+When using the ``nextdl`` module, you start by creating an instance of :class:`nextdl` and adding all the available extractors:
 
 .. code-block:: python
 
-    >>> from youtube_dl import YoutubeDL
-    >>> ydl = YoutubeDL()
+    >>> from nextdl import nextdl
+    >>> ydl = nextdl()
     >>> ydl.add_default_info_extractors()
 
 Extracting video information
 ----------------------------
 
-You use the :meth:`YoutubeDL.extract_info` method for getting the video information, which returns a dictionary:
+You use the :meth:`nextdl.extract_info` method for getting the video information, which returns a dictionary:
 
 .. code-block:: python
 
@@ -22,7 +22,7 @@ You use the :meth:`YoutubeDL.extract_info` method for getting the video informat
     [youtube] BaW_jenozKc: Downloading video info webpage
     [youtube] BaW_jenozKc: Extracting video information
     >>> info['title']
-    'youtube-dl test video "\'/\\ä↭𝕐'
+    'nextdl test video "\'/\\ä↭𝕐'
     >>> info['height'], info['width']
     (720, 1280)
 

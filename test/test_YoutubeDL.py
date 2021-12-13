@@ -12,12 +12,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import copy
 
 from test.helper import FakeYDL, assertRegexpMatches
-from youtube_dl import YoutubeDL
-from youtube_dl.compat import compat_str, compat_urllib_error
-from youtube_dl.extractor import YoutubeIE
-from youtube_dl.extractor.common import InfoExtractor
-from youtube_dl.postprocessor.common import PostProcessor
-from youtube_dl.utils import ExtractorError, match_filter_func
+from nextdl import nextdl
+from nextdl.compat import compat_str, compat_urllib_error
+from nextdl.extractor import YoutubeIE
+from nextdl.extractor.common import InfoExtractor
+from nextdl.postprocessor.common import PostProcessor
+from nextdl.utils import ExtractorError, match_filter_func
 
 TEST_URL = 'http://localhost/sample.mp4'
 
@@ -329,7 +329,7 @@ class TestFormatSelection(unittest.TestCase):
             # XXX: In real cases InfoExtractor._parse_mpd_formats() fills up 'acodec'
             # and 'vcodec', while in tests such information is incomplete since
             # commit a6c2c24479e5f4827ceb06f64d855329c0a6f593
-            # test_YoutubeDL.test_youtube_format_selection is broken without
+            # test_nextdl.test_youtube_format_selection is broken without
             # this fix
             if 'acodec' in info and 'vcodec' not in info:
                 info['vcodec'] = 'none'
@@ -411,7 +411,7 @@ class TestFormatSelection(unittest.TestCase):
         # For extractors with incomplete formats (all formats are audio-only or
         # video-only) best and worst should fallback to corresponding best/worst
         # video-only or audio-only formats (as per
-        # https://github.com/ytdl-org/youtube-dl/pull/5556)
+        # https://github.com/nextdl/nextdl/pull/5556)
         formats = [
             {'format_id': 'low', 'ext': 'mp3', 'preference': 1, 'vcodec': 'none', 'url': TEST_URL},
             {'format_id': 'high', 'ext': 'mp3', 'preference': 2, 'vcodec': 'none', 'url': TEST_URL},
@@ -442,7 +442,7 @@ class TestFormatSelection(unittest.TestCase):
         self.assertRaises(ExtractorError, ydl.process_ie_result, info_dict.copy())
 
     def test_format_selection_issue_10083(self):
-        # See https://github.com/ytdl-org/youtube-dl/issues/10083
+        # See https://github.com/nextdl/nextdl/issues/10083
         formats = [
             {'format_id': 'regular', 'height': 360, 'url': TEST_URL},
             {'format_id': 'video', 'height': 720, 'acodec': 'none', 'url': TEST_URL},
@@ -551,7 +551,7 @@ class TestFormatSelection(unittest.TestCase):
         self.assertEqual(ydl._default_format_spec({'is_live': True}), 'best/bestvideo+bestaudio')
 
 
-class TestYoutubeDL(unittest.TestCase):
+class Testnextdl(unittest.TestCase):
     def test_subtitles(self):
         def s_formats(lang, autocaption=False):
             return [{
@@ -637,7 +637,7 @@ class TestYoutubeDL(unittest.TestCase):
             params = {'outtmpl': templ}
             if na_placeholder != 'NA':
                 params['outtmpl_na_placeholder'] = na_placeholder
-            ydl = YoutubeDL(params)
+            ydl = nextdl(params)
             return ydl.prepare_filename(info)
         self.assertEqual(fname('%(id)s.%(ext)s'), '1234.mp4')
         self.assertEqual(fname('%(id)s-%(width)s.%(ext)s'), '1234-NA.mp4')
@@ -666,7 +666,7 @@ class TestYoutubeDL(unittest.TestCase):
         self.assertEqual(fname('Hello %(title2)s'), 'Hello %PATH%')
 
     def test_format_note(self):
-        ydl = YoutubeDL()
+        ydl = nextdl()
         self.assertEqual(ydl._format_note({}), '')
         assertRegexpMatches(self, ydl._format_note({
             'vbr': 10,
@@ -688,7 +688,7 @@ class TestYoutubeDL(unittest.TestCase):
         def run_pp(params, PP):
             with open(filename, 'wt') as f:
                 f.write('EXAMPLE')
-            ydl = YoutubeDL(params)
+            ydl = nextdl(params)
             ydl.add_post_processor(PP())
             ydl.post_process(filename, {'filepath': filename})
 
@@ -864,7 +864,7 @@ class TestYoutubeDL(unittest.TestCase):
         result = get_ids({'playlist_items': '2-4,3-4,3'})
         self.assertEqual(result, [2, 3, 4])
 
-        # Tests for https://github.com/ytdl-org/youtube-dl/issues/10591
+        # Tests for https://github.com/nextdl/nextdl/issues/10591
         # @{
         result = get_downloaded_info_dicts({'playlist_items': '2-4,3-4,3'})
         self.assertEqual(result[0]['playlist_index'], 2)
@@ -881,7 +881,7 @@ class TestYoutubeDL(unittest.TestCase):
         # @}
 
     def test_urlopen_no_file_protocol(self):
-        # see https://github.com/ytdl-org/youtube-dl/issues/8227
+        # see https://github.com/nextdl/nextdl/issues/8227
         ydl = YDL()
         self.assertRaises(compat_urllib_error.URLError, ydl.urlopen, 'file:///etc/passwd')
 
@@ -927,7 +927,7 @@ class TestYoutubeDL(unittest.TestCase):
         self.assertEqual(downloaded['extractor'], 'testex')
         self.assertEqual(downloaded['extractor_key'], 'TestEx')
 
-    # Test case for https://github.com/ytdl-org/youtube-dl/issues/27064
+    # Test case for https://github.com/nextdl/nextdl/issues/27064
     def test_ignoreerrors_for_playlist_with_url_transparent_iterable_entries(self):
 
         class _YDL(YDL):

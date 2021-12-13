@@ -9,8 +9,8 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test.helper import http_server_port
-from youtube_dl import YoutubeDL
-from youtube_dl.compat import compat_http_server, compat_urllib_request
+from nextdl import nextdl
+from nextdl.compat import compat_http_server, compat_urllib_request
 import ssl
 import threading
 
@@ -77,7 +77,7 @@ class TestHTTP(unittest.TestCase):
         if sys.version_info[0] == 3:
             return
 
-        ydl = YoutubeDL({'logger': FakeLogger()})
+        ydl = nextdl({'logger': FakeLogger()})
         r = ydl.extract_info('http://127.0.0.1:%d/302' % self.port)
         self.assertEqual(r['entries'][0]['url'], 'http://127.0.0.1:%d/vid.mp4' % self.port)
 
@@ -96,12 +96,12 @@ class TestHTTPS(unittest.TestCase):
 
     def test_nocheckcertificate(self):
         if sys.version_info >= (2, 7, 9):  # No certificate checking anyways
-            ydl = YoutubeDL({'logger': FakeLogger()})
+            ydl = nextdl({'logger': FakeLogger()})
             self.assertRaises(
                 Exception,
                 ydl.extract_info, 'https://127.0.0.1:%d/video.html' % self.port)
 
-        ydl = YoutubeDL({'logger': FakeLogger(), 'nocheckcertificate': True})
+        ydl = nextdl({'logger': FakeLogger(), 'nocheckcertificate': True})
         r = ydl.extract_info('https://127.0.0.1:%d/video.html' % self.port)
         self.assertEqual(r['entries'][0]['url'], 'https://127.0.0.1:%d/vid.mp4' % self.port)
 
@@ -139,7 +139,7 @@ class TestProxy(unittest.TestCase):
 
     def test_proxy(self):
         geo_proxy = '127.0.0.1:{0}'.format(self.geo_port)
-        ydl = YoutubeDL({
+        ydl = nextdl({
             'proxy': '127.0.0.1:{0}'.format(self.port),
             'geo_verification_proxy': geo_proxy,
         })
@@ -148,12 +148,12 @@ class TestProxy(unittest.TestCase):
         self.assertEqual(response, 'normal: {0}'.format(url))
 
         req = compat_urllib_request.Request(url)
-        req.add_header('Ytdl-request-proxy', geo_proxy)
+        req.add_header('nextdl-request-proxy', geo_proxy)
         response = ydl.urlopen(req).read().decode('utf-8')
         self.assertEqual(response, 'geo: {0}'.format(url))
 
     def test_proxy_with_idn(self):
-        ydl = YoutubeDL({
+        ydl = nextdl({
             'proxy': '127.0.0.1:{0}'.format(self.port),
         })
         url = 'http://中文.tw/'

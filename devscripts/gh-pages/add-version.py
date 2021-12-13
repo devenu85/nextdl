@@ -22,12 +22,12 @@ if 'signature' in versions_info:
 new_version = {}
 
 filenames = {
-    'bin': 'youtube-dl',
-    'exe': 'youtube-dl.exe',
-    'tar': 'youtube-dl-%s.tar.gz' % version}
+    'bin': 'nextdl',
+    'exe': 'nextdl.exe',
+    'tar': 'nextdl-%s.tar.gz' % version}
 build_dir = os.path.join('..', '..', 'build', version)
 for key, filename in filenames.items():
-    url = 'https://yt-dl.org/downloads/%s/%s' % (version, filename)
+    url = 'https://nextdl.org/downloads/%s/%s' % (version, filename)
     fn = os.path.join(build_dir, filename)
     with open(fn, 'rb') as f:
         data = f.read()

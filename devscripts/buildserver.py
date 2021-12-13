@@ -12,7 +12,7 @@ import traceback
 import os.path
 
 sys.path.insert(0, os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
-from youtube_dl.compat import (
+from nextdl.compat import (
     compat_input,
     compat_http_server,
     compat_str,
@@ -48,7 +48,7 @@ SERVICE_STATUS_START_PENDING = 0x00000002
 SERVICE_STATUS_RUNNING = 0x00000004
 SERVICE_ACCEPT_STOP = 0x1
 
-SVCNAME = 'youtubedl_builder'
+SVCNAME = 'nextdl_builder'
 
 LPTSTR = ctypes.c_wchar_p
 START_CALLBACK = ctypes.WINFUNCTYPE(None, ctypes.c_int, ctypes.POINTER(LPTSTR))
@@ -321,16 +321,16 @@ class GITBuilder(GITInfoBuilder):
         super(GITBuilder, self).build()
 
 
-class YoutubeDLBuilder(object):
-    authorizedUsers = ['fraca7', 'phihag', 'rg3', 'FiloSottile', 'ytdl-org']
+class nextdlBuilder(object):
+    authorizedUsers = ['fraca7', 'phihag', 'rg3', 'FiloSottile', 'nextdl']
 
     def __init__(self, **kwargs):
-        if self.repoName != 'youtube-dl':
+        if self.repoName != 'nextdl':
             raise BuildError('Invalid repository "%s"' % self.repoName)
         if self.user not in self.authorizedUsers:
             raise HTTPError('Unauthorized user "%s"' % self.user, 401)
 
-        super(YoutubeDLBuilder, self).__init__(**kwargs)
+        super(nextdlBuilder, self).__init__(**kwargs)
 
     def build(self):
         try:
@@ -341,7 +341,7 @@ class YoutubeDLBuilder(object):
         except subprocess.CalledProcessError as e:
             raise BuildError(e.output)
 
-        super(YoutubeDLBuilder, self).build()
+        super(nextdlBuilder, self).build()
 
 
 class DownloadBuilder(object):
@@ -396,7 +396,7 @@ class Null(object):
         pass
 
 
-class Builder(PythonBuilder, GITBuilder, YoutubeDLBuilder, DownloadBuilder, CleanupTempDir, Null):
+class Builder(PythonBuilder, GITBuilder, nextdlBuilder, DownloadBuilder, CleanupTempDir, Null):
     pass
 
 

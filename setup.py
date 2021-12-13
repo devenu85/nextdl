@@ -32,20 +32,20 @@ py2exe_options = {
     'dll_excludes': ['w9xpopen.exe', 'crypt32.dll'],
 }
 
-# Get the version from youtube_dl/version.py without importing the package
-exec(compile(open('youtube_dl/version.py').read(),
-             'youtube_dl/version.py', 'exec'))
+# Get the version from nextdl/version.py without importing the package
+exec(compile(open('nextdl/version.py').read(),
+             'nextdl/version.py', 'exec'))
 
 DESCRIPTION = 'YouTube video downloader'
 LONG_DESCRIPTION = 'Command-line program to download videos from YouTube.com and other video sites'
 
 py2exe_console = [{
-    'script': './youtube_dl/__main__.py',
-    'dest_base': 'youtube-dl',
+    'script': './nextdl/__main__.py',
+    'dest_base': 'nextdl',
     'version': __version__,
     'description': DESCRIPTION,
     'comments': LONG_DESCRIPTION,
-    'product_name': 'youtube-dl',
+    'product_name': 'nextdl',
     'product_version': __version__,
 }]
 
@@ -59,10 +59,10 @@ if len(sys.argv) >= 2 and sys.argv[1] == 'py2exe':
     params = py2exe_params
 else:
     files_spec = [
-        ('etc/bash_completion.d', ['youtube-dl.bash-completion']),
-        ('etc/fish/completions', ['youtube-dl.fish']),
-        ('share/doc/youtube_dl', ['README.txt']),
-        ('share/man/man1', ['youtube-dl.1'])
+        ('etc/bash_completion.d', ['nextdl.bash-completion']),
+        ('etc/fish/completions', ['nextdl.fish']),
+        ('share/doc/nextdl', ['README.txt']),
+        ('share/man/man1', ['nextdl.1'])
     ]
     root = os.path.dirname(os.path.abspath(__file__))
     data_files = []
@@ -79,9 +79,9 @@ else:
         'data_files': data_files,
     }
     if setuptools_available:
-        params['entry_points'] = {'console_scripts': ['youtube-dl = youtube_dl:main']}
+        params['entry_points'] = {'console_scripts': ['nextdl = nextdl:main']}
     else:
-        params['scripts'] = ['bin/youtube-dl']
+        params['scripts'] = ['bin/nextdl']
 
 class build_lazy_extractors(Command):
     description = 'Build the extractor lazy loading module'
@@ -95,25 +95,25 @@ class build_lazy_extractors(Command):
 
     def run(self):
         spawn(
-            [sys.executable, 'devscripts/make_lazy_extractors.py', 'youtube_dl/extractor/lazy_extractors.py'],
+            [sys.executable, 'devscripts/make_lazy_extractors.py', 'nextdl/extractor/lazy_extractors.py'],
             dry_run=self.dry_run,
         )
 
 setup(
-    name='youtube_dl',
+    name='nextdl',
     version=__version__,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
-    url='https://github.com/ytdl-org/youtube-dl',
-    author='Ricardo Garcia',
-    author_email='ytdl@yt-dl.org',
+    url='https://github.com/nextdl/nextdl',
+    author='nextdl',
+    author_email='nextdl@nextdl.org',
     maintainer='Sergey M.',
     maintainer_email='dstftw@gmail.com',
     license='Unlicense',
     packages=[
-        'youtube_dl',
-        'youtube_dl.extractor', 'youtube_dl.downloader',
-        'youtube_dl.postprocessor'],
+        'nextdl',
+        'nextdl.extractor', 'nextdl.downloader',
+        'nextdl.postprocessor'],
 
     # Provokes warning on most systems (why?!)
     # test_suite = 'nose.collector',

@@ -10,25 +10,25 @@ import textwrap
 atom_template = textwrap.dedent("""\
     <?xml version="1.0" encoding="utf-8"?>
     <feed xmlns="http://www.w3.org/2005/Atom">
-        <link rel="self" href="http://ytdl-org.github.io/youtube-dl/update/releases.atom" />
-        <title>youtube-dl releases</title>
-        <id>https://yt-dl.org/feed/youtube-dl-updates-feed</id>
+        <link rel="self" href="http://nextdl.github.io/nextdl/update/releases.atom" />
+        <title>nextdl releases</title>
+        <id>https://nextdl.org/feed/nextdl-updates-feed</id>
         <updated>@TIMESTAMP@</updated>
         @ENTRIES@
     </feed>""")
 
 entry_template = textwrap.dedent("""
     <entry>
-        <id>https://yt-dl.org/feed/youtube-dl-updates-feed/youtube-dl-@VERSION@</id>
+        <id>https://nextdl.org/feed/nextdl-updates-feed/nextdl-@VERSION@</id>
         <title>New version @VERSION@</title>
-        <link href="http://ytdl-org.github.io/youtube-dl" />
+        <link href="http://nextdl.github.io/nextdl" />
         <content type="xhtml">
             <div xmlns="http://www.w3.org/1999/xhtml">
-                Downloads available at <a href="https://yt-dl.org/downloads/@VERSION@/">https://yt-dl.org/downloads/@VERSION@/</a>
+                Downloads available at <a href="https://nextdl.org/downloads/@VERSION@/">https://nextdl.org/downloads/@VERSION@/</a>
             </div>
         </content>
         <author>
-            <name>The youtube-dl maintainers</name>
+            <name>The nextdl maintainers</name>
         </author>
         <updated>@TIMESTAMP@</updated>
     </entry>

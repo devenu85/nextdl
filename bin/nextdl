@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import nextdl
+
+if __name__ == '__main__':
+    nextdl.main()
