@@ -121,7 +121,7 @@ setup(
     url="https://github.com/nextdl/nextdl",
     author="nextdl",
     author_email="nextdl@nextdl.org",
-    license="MIT License",
+    license="MIT",
     packages=[
         "nextdl",
         "nextdl.extractor",
