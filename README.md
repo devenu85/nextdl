@@ -1,7 +1,7 @@
 [![Build Status](https://github.com/nextdl/nextdl/workflows/CI/badge.svg)](https://github.com/nextdl/nextdl/actions?query=workflow%3ACI)
 
 
-nextdl - download videos from youtube.com or other video platforms
+# nextdl - download videos from youtube.com or other video platforms
 
 - [INSTALLATION](#installation)
 - [DESCRIPTION](#description)
@@ -18,16 +18,6 @@ nextdl - download videos from youtube.com or other video platforms
 
 # INSTALLATION
 
-To install it right away for all UNIX users (Linux, macOS, etc.), type:
-
-    sudo curl -L https://nextdl.org/downloads/latest/nextdl -o /usr/local/bin/nextdl
-    sudo chmod a+rx /usr/local/bin/nextdl
-
-If you do not have curl, you can alternatively use a recent wget:
-
-    sudo wget https://nextdl.org/downloads/latest/nextdl -O /usr/local/bin/nextdl
-    sudo chmod a+rx /usr/local/bin/nextdl
-
 Windows users can [download an .exe file](https://nextdl.org/latest/nextdl.exe) and place it in any location on their [PATH](https://en.wikipedia.org/wiki/PATH_%28variable%29) except for `%SYSTEMROOT%\System32` (e.g. **do not** put in `C:\Windows\System32`).
 
 You can also use pip:
@@ -35,14 +25,6 @@ You can also use pip:
     sudo -H pip install --upgrade nextdl
     
 This command will update nextdl if you have already installed it. See the [pypi page](https://pypi.python.org/pypi/nextdl) for more information.
-
-macOS users can install nextdl with [Homebrew](https://brew.sh/):
-
-    brew install nextdl
-
-Or with [MacPorts](https://www.macports.org/):
-
-    sudo port install nextdl
 
 Alternatively, refer to the [developer instructions](#developer-instructions) for how to check out and work with the git repository. For further options, including PGP signatures, see the [nextdl Download Page](https://nextdl.github.io/nextdl/download.html).
 
