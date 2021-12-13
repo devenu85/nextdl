@@ -1,7 +1,5 @@
-[![Build Status](https://github.com/nextdl/nextdl/workflows/CI/badge.svg)](https://github.com/nextdl/nextdl/actions?query=workflow%3ACI)
-
-
 # nextdl - download videos from youtube.com or other video platforms
+[![Build Status](https://github.com/nextdl/nextdl/workflows/CI/badge.svg)](https://github.com/nextdl/nextdl/actions?query=workflow%3ACI)
 
 - [INSTALLATION](#installation)
 - [DESCRIPTION](#description)
