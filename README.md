@@ -1,6 +1,6 @@
 # nextdl - download videos from youtube.com or other video platforms
 [![Build Status](https://github.com/nextdl/nextdl/workflows/CI/badge.svg)](https://github.com/nextdl/nextdl/actions?query=workflow%3ACI)
-[![Discord Server](https://discord.com/api/guilds/919890937444978719/embed.png)(https://discord.gg/CKBVpNXhrM)]
+[![Discord Server](https://discord.com/api/guilds/919890937444978719/embed.png)](https://discord.gg/CKBVpNXhrM)
 
 - [INSTALLATION](#installation)
 - [DESCRIPTION](#description)
