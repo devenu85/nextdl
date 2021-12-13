@@ -2,19 +2,18 @@
 from __future__ import unicode_literals
 
 import os
-from os.path import dirname as dirn
 import sys
+from os.path import dirname as dirn
 
 sys.path.insert(0, dirn(dirn((os.path.abspath(__file__)))))
-import youtube_dl
+import nextdl
 
-ZSH_COMPLETION_FILE = "youtube-dl.zsh"
+ZSH_COMPLETION_FILE = "nextdl.zsh"
 ZSH_COMPLETION_TEMPLATE = "devscripts/zsh-completion.in"
 
 
 def build_completion(opt_parser):
-    opts = [opt for group in opt_parser.option_groups
-            for opt in group.option_list]
+    opts = [opt for group in opt_parser.option_groups for opt in group.option_list]
     opts_file = [opt for opt in opts if opt.metavar == "FILE"]
     opts_dir = [opt for opt in opts if opt.metavar == "DIR"]
 
@@ -45,5 +44,5 @@ def build_completion(opt_parser):
         f.write(template)
 
 
-parser = youtube_dl.parseOpts()[0]
+parser = nextdl.parseOpts()[0]
 build_completion(parser)

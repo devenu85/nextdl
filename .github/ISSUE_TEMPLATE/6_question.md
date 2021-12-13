@@ -1,6 +1,6 @@
 ---
 name: Ask question
-about: Ask youtube-dl related question
+about: Ask nextdl related question
 title: ''
 labels: 'question'
 ---
@@ -18,9 +18,9 @@ labels: 'question'
 ## Checklist
 
 <!--
-Carefully read and work through this check list in order to prevent the most common mistakes and misuse of youtube-dl:
-- Look through the README (http://yt-dl.org/readme) and FAQ (http://yt-dl.org/faq) for similar questions
-- Search the bugtracker for similar questions: http://yt-dl.org/search-issues
+Carefully read and work through this check list in order to prevent the most common mistakes and misuse of nextdl:
+- Look through the README (http://nextdl.org/readme) and FAQ (http://nextdl.org/faq) for similar questions
+- Search the bugtracker for similar questions: http://nextdl.org/search-issues
 - Finally, put x into all relevant boxes (like this [x])
 -->
 
@@ -32,7 +32,7 @@ Carefully read and work through this check list in order to prevent the most com
 ## Question
 
 <!--
-Ask your question in an arbitrary form. Please make sure it's worded well enough to be understood, see https://github.com/ytdl-org/youtube-dl#is-the-description-of-the-issue-itself-sufficient.
+Ask your question in an arbitrary form. Please make sure it's worded well enough to be understood, see https://github.com/nextdl/nextdl#is-the-description-of-the-issue-itself-sufficient.
 -->
 
 WRITE QUESTION HERE

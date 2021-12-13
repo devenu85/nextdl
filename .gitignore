@@ -10,13 +10,12 @@ build/
 dist/
 MANIFEST
 README.txt
-youtube-dl.1
-youtube-dl.bash-completion
-youtube-dl.fish
-youtube_dl/extractor/lazy_extractors.py
-youtube-dl
-youtube-dl.exe
-youtube-dl.tar.gz
+nextdl.1
+nextdl.bash-completion
+nextdl.fish
+nextdl/extractor/lazy_extractors.py
+nextdl.exe
+nextdl.tar.gz
 .coverage
 cover/
 updates_key.pem
@@ -36,11 +35,11 @@ updates_key.pem
 *.mkv
 *.swf
 *.part
-*.ytdl
+*.nextdl
 *.swp
 test/local_parameters.json
 .tox
-youtube-dl.zsh
+nextdl.zsh
 
 # IntelliJ related files
 .idea
