@@ -10,11 +10,11 @@ build/
 dist/
 MANIFEST
 README.txt
-youtube-dl.1
-youtube-dl.bash-completion
-youtube-dl
-youtube-dl.exe
-youtube-dl.tar.gz
+nextdl.1
+nextdl.bash-completion
+nextdl
+nextdl.exe
+nextdl.tar.gz
 .coverage
 cover/
-youtube_dl.egg-info/
+nextdl.egg-info/

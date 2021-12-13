@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<title>youtube-dl: Supported sites</title>
+<title>nextdl: Supported sites</title>
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 
 <table class="heading"><tr>
-	<td class="title"><a href="index.html">youtube-dl</a></td>
+	<td class="title"><a href="index.html">nextdl</a></td>
 	<td class="subtitle">Supported sites</td>
 </tr></table>
 
@@ -22,7 +22,7 @@
 <img alt="Creative Commons License" style="border-width:0"
 src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png" /></a><br />
 Copyright © 2006-2011 Ricardo Garcia Gonzalez<br />
-Copyright © 2011-2021 youtube-dl developers
+Copyright © 2011-2021 nextdl developers
 </div>
 </body>
 </html>
