@@ -1,6 +1,11 @@
-#!/usr/bin/env python
-# coding: utf-8
+"""
+nextdl
+~~~~~~
+Website audio and video downloader, A community fork of YouTube-DL
 
+:copyright: 2021 nextdl
+:license: MIT
+"""
 from __future__ import unicode_literals
 
 __license__ = "MIT"
