@@ -2,6 +2,10 @@
 [![Build Status](https://github.com/nextdl/nextdl/workflows/CI/badge.svg)](https://github.com/nextdl/nextdl/actions?query=workflow%3ACI)
 [![Discord Server](https://discord.com/api/guilds/919890937444978719/embed.png)](https://discord.gg/CKBVpNXhrM)
 
+nextdl is a community fork of youtube-dl(yt-dl);
+
+We decided to fork it since the project has subsequently died, The last commit was july of 2021.
+
 - [INSTALLATION](#installation)
 - [DESCRIPTION](#description)
 - [OPTIONS](#options)

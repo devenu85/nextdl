@@ -173,9 +173,6 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: Implementation",
         "Programming Language :: Python :: Implementation :: CPython",
-        "Programming Language :: Python :: Implementation :: IronPython",
-        "Programming Language :: Python :: Implementation :: Jython",
-        "Programming Language :: Python :: Implementation :: PyPy",
     ],
     cmdclass={"build_lazy_extractors": build_lazy_extractors},
     **params
