@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import random
 import subprocess
-from test.helper import FakeYDL, get_params
+from test.helper import Fakendl, get_params
 
 from nextdl.compat import compat_str, compat_urllib_request
 
@@ -30,9 +30,9 @@ class TestMultipleSocks(unittest.TestCase):
         params = self._check_params(["primary_proxy", "primary_server_ip"])
         if params is None:
             return
-        ydl = FakeYDL({"proxy": params["primary_proxy"]})
+        ndl = Fakendl({"proxy": params["primary_proxy"]})
         self.assertEqual(
-            ydl.urlopen("http://nextdl.org/ip").read().decode("utf-8"),
+            ndl.urlopen("http://nextdl.org/ip").read().decode("utf-8"),
             params["primary_server_ip"],
         )
 
@@ -40,9 +40,9 @@ class TestMultipleSocks(unittest.TestCase):
         params = self._check_params(["primary_proxy", "primary_server_ip"])
         if params is None:
             return
-        ydl = FakeYDL({"proxy": params["primary_proxy"]})
+        ndl = Fakendl({"proxy": params["primary_proxy"]})
         self.assertEqual(
-            ydl.urlopen("https://nextdl.org/ip").read().decode("utf-8"),
+            ndl.urlopen("https://nextdl.org/ip").read().decode("utf-8"),
             params["primary_server_ip"],
         )
 
@@ -50,22 +50,22 @@ class TestMultipleSocks(unittest.TestCase):
         params = self._check_params(["secondary_proxy", "secondary_server_ip"])
         if params is None:
             return
-        ydl = FakeYDL()
+        ndl = Fakendl()
         req = compat_urllib_request.Request("http://nextdl.org/ip")
         req.add_header("nextdl-request-proxy", params["secondary_proxy"])
         self.assertEqual(
-            ydl.urlopen(req).read().decode("utf-8"), params["secondary_server_ip"]
+            ndl.urlopen(req).read().decode("utf-8"), params["secondary_server_ip"]
         )
 
     def test_secondary_proxy_https(self):
         params = self._check_params(["secondary_proxy", "secondary_server_ip"])
         if params is None:
             return
-        ydl = FakeYDL()
+        ndl = Fakendl()
         req = compat_urllib_request.Request("https://nextdl.org/ip")
         req.add_header("nextdl-request-proxy", params["secondary_proxy"])
         self.assertEqual(
-            ydl.urlopen(req).read().decode("utf-8"), params["secondary_server_ip"]
+            ndl.urlopen(req).read().decode("utf-8"), params["secondary_server_ip"]
         )
 
 
@@ -95,12 +95,12 @@ class TestSocks(unittest.TestCase):
         if self._SKIP_SOCKS_TEST:
             return "127.0.0.1"
 
-        ydl = FakeYDL(
+        ndl = Fakendl(
             {
                 "proxy": "%s://127.0.0.1:%d" % (protocol, self.port),
             }
         )
-        return ydl.urlopen("http://nextdl.org/ip").read().decode("utf-8")
+        return ndl.urlopen("http://nextdl.org/ip").read().decode("utf-8")
 
     def test_socks4(self):
         self.assertTrue(isinstance(self._get_ip("socks4"), compat_str))

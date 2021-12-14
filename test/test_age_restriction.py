@@ -22,11 +22,11 @@ def _download_restricted(url, filename, age):
         "writeinfojson": True,
         "outtmpl": "%(id)s.%(ext)s",
     }
-    ydl = nextdl(params)
-    ydl.add_default_info_extractors()
+    ndl = nextdl(params)
+    ndl.add_default_info_extractors()
     json_filename = os.path.splitext(filename)[0] + ".info.json"
     try_rm(json_filename)
-    ydl.download([url])
+    ndl.download([url])
     res = os.path.exists(json_filename)
     try_rm(json_filename)
     return res

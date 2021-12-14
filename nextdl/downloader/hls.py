@@ -54,7 +54,7 @@ class HlsFD(FragmentFD):
         man_url = info_dict["url"]
         self.to_screen("[%s] Downloading m3u8 manifest" % self.FD_NAME)
 
-        urlh = self.ydl.urlopen(self._prepare_url(info_dict, man_url))
+        urlh = self.ndl.urlopen(self._prepare_url(info_dict, man_url))
         man_url = urlh.geturl()
         s = urlh.read().decode("utf-8", "ignore")
 
@@ -68,7 +68,7 @@ class HlsFD(FragmentFD):
                 "hlsnative has detected features it does not support, "
                 "extraction will be delegated to ffmpeg"
             )
-            fd = FFmpegFD(self.ydl, self.params)
+            fd = FFmpegFD(self.ndl, self.params)
             for ph in self._progress_hooks:
                 fd.add_progress_hook(ph)
             return fd.real_download(filename, info_dict)
@@ -163,8 +163,8 @@ class HlsFD(FragmentFD):
                         except compat_urllib_error.HTTPError as err:
                             # Unavailable (possibly temporary) fragments may be served.
                             # First we try to retry then either skip or abort.
-                            # See https://github.com/ytdl-org/nextdl/issues/10165,
-                            # https://github.com/ytdl-org/nextdl/issues/10448).
+                            # See https://github.com/nextdl/nextdl/issues/10165,
+                            # https://github.com/nextdl/nextdl/issues/10448).
                             count += 1
                             if count <= fragment_retries:
                                 self.report_retry_fragment(
@@ -186,7 +186,7 @@ class HlsFD(FragmentFD):
                         )
                         decrypt_info["KEY"] = (
                             decrypt_info.get("KEY")
-                            or self.ydl.urlopen(
+                            or self.ndl.urlopen(
                                 self._prepare_url(
                                     info_dict,
                                     info_dict.get("_decryption_key_url")
@@ -195,7 +195,7 @@ class HlsFD(FragmentFD):
                             ).read()
                         )
                         # Don't decrypt the content in tests since the data is explicitly truncated and it's not to a valid block
-                        # size (see https://github.com/ytdl-org/nextdl/pull/27660). Tests only care that the correct data downloaded,
+                        # size (see https://github.com/nextdl/nextdl/pull/27660). Tests only care that the correct data downloaded,
                         # not what it decrypts to.
                         if not test:
                             frag_content = AES.new(

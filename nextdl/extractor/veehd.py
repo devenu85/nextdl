@@ -51,7 +51,7 @@ class VeeHDIE(InfoExtractor):
         video_id = self._match_id(url)
 
         # VeeHD seems to send garbage on the first request.
-        # See https://github.com/ytdl-org/nextdl/issues/2102
+        # See https://github.com/nextdl/nextdl/issues/2102
         self._download_webpage(url, video_id, "Requesting webpage")
         webpage = self._download_webpage(url, video_id)
 

@@ -324,7 +324,7 @@ class VLiveChannelIE(VLiveBaseIE):
                     # Large values of maxNumOfRows (~300 or above) may cause
                     # empty responses (see [1]), e.g. this happens for [2] that
                     # has more than 300 videos.
-                    # 1. https://github.com/ytdl-org/nextdl/issues/13830
+                    # 1. https://github.com/nextdl/nextdl/issues/13830
                     # 2. http://channels.vlive.tv/EDBF.
                     "maxNumOfRows": 100,
                     "pageNo": page_num,

@@ -62,7 +62,7 @@ class RtlNlIE(InfoExtractor):
             },
         },
         {
-            # empty synopsis and missing episodes (see https://github.com/ytdl-org/nextdl/issues/6275)
+            # empty synopsis and missing episodes (see https://github.com/nextdl/nextdl/issues/6275)
             # best format available nettv
             "url": "http://www.rtl.nl/system/videoplayer/derden/rtlnieuws/video_embed.html#uuid=f536aac0-1dc3-4314-920e-3bd1c5b3811a/autoplay=false",
             "info_dict": {

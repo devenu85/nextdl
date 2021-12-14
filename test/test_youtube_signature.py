@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import io
 import re
 import string
-from test.helper import FakeYDL
+from test.helper import Fakendl
 
 from nextdl.compat import compat_str, compat_urlretrieve
 from nextdl.extractor import YoutubeIE
@@ -144,8 +144,8 @@ def make_tfunc(url, sig_input, expected_sig):
         if not os.path.exists(fn):
             compat_urlretrieve(url, fn)
 
-        ydl = FakeYDL()
-        ie = YoutubeIE(ydl)
+        ndl = Fakendl()
+        ie = YoutubeIE(ndl)
         with io.open(fn, encoding="utf-8") as testf:
             jscode = testf.read()
         func = ie._parse_sig_js(jscode)

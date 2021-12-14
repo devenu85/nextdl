@@ -203,7 +203,7 @@ class BBCCoUkIE(InfoExtractor):
             "skip": "Now it's really geo-restricted",
         },
         {
-            # compact player (https://github.com/ytdl-org/nextdl/issues/8147)
+            # compact player (https://github.com/nextdl/nextdl/issues/8147)
             "url": "http://www.bbc.co.uk/programmes/p028bfkf/player",
             "info_dict": {
                 "id": "p028bfkj",

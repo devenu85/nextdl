@@ -455,7 +455,7 @@ class GenericIE(InfoExtractor):
             },
         },
         {
-            # https://github.com/ytdl-org/nextdl/issues/2253
+            # https://github.com/nextdl/nextdl/issues/2253
             "url": "http://bcove.me/i6nfkrc3",
             "md5": "0ba9446db037002366bab3b3eb30c88c",
             "info_dict": {
@@ -480,7 +480,7 @@ class GenericIE(InfoExtractor):
             },
         },
         {
-            # https://github.com/ytdl-org/nextdl/issues/3541
+            # https://github.com/nextdl/nextdl/issues/3541
             "add_ie": ["BrightcoveLegacy"],
             "url": "http://www.kijk.nl/sbs6/leermijvrouwenkennen/videos/jqMiXKAYan2S/aflevering-1",
             "info_dict": {
@@ -950,7 +950,7 @@ class GenericIE(InfoExtractor):
             },
         },
         # Multiple brightcove videos
-        # https://github.com/ytdl-org/nextdl/issues/2283
+        # https://github.com/nextdl/nextdl/issues/2283
         {
             "url": "http://www.newyorker.com/online/blogs/newsdesk/2014/01/always-never-nuclear-command-and-control.html",
             "info_dict": {
@@ -2527,14 +2527,14 @@ class GenericIE(InfoExtractor):
             return camtasia_res
 
         # Sometimes embedded video player is hidden behind percent encoding
-        # (e.g. https://github.com/ytdl-org/nextdl/issues/2448)
+        # (e.g. https://github.com/nextdl/nextdl/issues/2448)
         # Unescaping the whole page allows to handle those cases in a generic way
         # FIXME: unescaping the whole page may break URLs, commenting out for now.
         # There probably should be a second run of generic extractor on unescaped webpage.
         # webpage = compat_urllib_parse_unquote(webpage)
 
         # Unescape squarespace embeds to be detected by generic extractor,
-        # see https://github.com/ytdl-org/nextdl/issues/21294
+        # see https://github.com/nextdl/nextdl/issues/21294
         webpage = re.sub(
             r"<div[^>]+class=[^>]*?\bsqs-video-wrapper\b[^>]*>",
             lambda x: unescapeHTML(x.group(0)),
@@ -3581,7 +3581,7 @@ class GenericIE(InfoExtractor):
                 )
                 return merge_dicts(info, info_dict)
             except ExtractorError:
-                # See https://github.com/ytdl-org/nextdl/pull/16735
+                # See https://github.com/nextdl/nextdl/pull/16735
                 pass
 
         # Video.js embed

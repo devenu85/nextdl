@@ -82,7 +82,7 @@ class TouTvIE(RadioCanadaIE):
             },
         )
         # IsDrm does not necessarily mean the video is DRM protected (see
-        # https://github.com/ytdl-org/nextdl/issues/13994).
+        # https://github.com/nextdl/nextdl/issues/13994).
         if metadata.get("IsDrm"):
             self.report_warning("This video is probably DRM protected.", path)
         video_id = metadata["IdMedia"]

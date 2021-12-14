@@ -6,8 +6,8 @@ When using the ``nextdl`` module, you start by creating an instance of :class:`n
 .. code-block:: python
 
     >>> from nextdl import nextdl
-    >>> ydl = nextdl()
-    >>> ydl.add_default_info_extractors()
+    >>> ndl = nextdl()
+    >>> ndl.add_default_info_extractors()
 
 Extracting video information
 ----------------------------
@@ -16,7 +16,7 @@ You use the :meth:`nextdl.extract_info` method for getting the video information
 
 .. code-block:: python
 
-    >>> info = ydl.extract_info('http://www.youtube.com/watch?v=BaW_jenozKc', download=False)
+    >>> info = ndl.extract_info('http://www.youtube.com/watch?v=BaW_jenozKc', download=False)
     [youtube] Setting language
     [youtube] BaW_jenozKc: Downloading webpage
     [youtube] BaW_jenozKc: Downloading video info webpage
@@ -40,7 +40,7 @@ The playlist information is extracted in a similar way, but the dictionary is a 
 
 .. code-block:: python
 
-    >>> playlist = ydl.extract_info('http://www.ted.com/playlists/13/open_source_open_world', download=False)
+    >>> playlist = ndl.extract_info('http://www.ted.com/playlists/13/open_source_open_world', download=False)
     [TED] open_source_open_world: Downloading playlist webpage
     ...
     >>> playlist['title']

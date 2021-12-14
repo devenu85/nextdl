@@ -12,7 +12,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
-from test.helper import FakeYDL
+from test.helper import Fakendl
 
 from nextdl.cache import Cache
 
@@ -39,12 +39,12 @@ class TestCache(unittest.TestCase):
             shutil.rmtree(self.test_dir)
 
     def test_cache(self):
-        ydl = FakeYDL(
+        ndl = Fakendl(
             {
                 "cachedir": self.test_dir,
             }
         )
-        c = Cache(ydl)
+        c = Cache(ndl)
         obj = {"x": 1, "y": ["ä", "\\a", True]}
         self.assertEqual(c.load("test_cache", "k."), None)
         c.store("test_cache", "k.", obj)

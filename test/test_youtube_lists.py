@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from test.helper import FakeYDL
+from test.helper import Fakendl
 
 from nextdl.extractor import YoutubeIE, YoutubePlaylistIE, YoutubeTabIE
 
@@ -19,7 +19,7 @@ class TestYoutubeLists(unittest.TestCase):
         self.assertEqual(info["_type"], "playlist")
 
     def test_youtube_playlist_noplaylist(self):
-        dl = FakeYDL()
+        dl = Fakendl()
         dl.params["noplaylist"] = True
         ie = YoutubePlaylistIE(dl)
         result = ie.extract(
@@ -29,7 +29,7 @@ class TestYoutubeLists(unittest.TestCase):
         self.assertEqual(YoutubeIE().extract_id(result["url"]), "FXxLjLQi3Fg")
 
     def test_youtube_course(self):
-        dl = FakeYDL()
+        dl = Fakendl()
         ie = YoutubePlaylistIE(dl)
         # TODO find a > 100 (paginating?) videos course
         result = ie.extract(
@@ -41,7 +41,7 @@ class TestYoutubeLists(unittest.TestCase):
         self.assertEqual(YoutubeIE().extract_id(entries[-1]["url"]), "rYefUsYuEp0")
 
     def test_youtube_mix(self):
-        dl = FakeYDL()
+        dl = Fakendl()
         ie = YoutubePlaylistIE(dl)
         result = ie.extract(
             "https://www.youtube.com/watch?v=W01L70IGBgE&index=2&list=RDOQpdSVF_k_w"
@@ -54,14 +54,14 @@ class TestYoutubeLists(unittest.TestCase):
     def test_youtube_toptracks(self):
         print("Skipping: The playlist page gives error 500")
         return
-        dl = FakeYDL()
+        dl = Fakendl()
         ie = YoutubePlaylistIE(dl)
         result = ie.extract("https://www.youtube.com/playlist?list=MCUS")
         entries = result["entries"]
         self.assertEqual(len(entries), 100)
 
     def test_youtube_flat_playlist_extraction(self):
-        dl = FakeYDL()
+        dl = Fakendl()
         dl.params["extract_flat"] = True
         ie = YoutubeTabIE(dl)
         result = ie.extract(

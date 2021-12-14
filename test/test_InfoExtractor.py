@@ -11,7 +11,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import threading
-from test.helper import FakeYDL, expect_dict, expect_value, http_server_port
+from test.helper import Fakendl, expect_dict, expect_value, http_server_port
 
 from nextdl.compat import compat_etree_fromstring, compat_http_server
 from nextdl.extractor import YoutubeIE, get_info_extractor
@@ -43,7 +43,7 @@ class TestIE(InfoExtractor):
 
 class TestInfoExtractor(unittest.TestCase):
     def setUp(self):
-        self.ie = TestIE(FakeYDL())
+        self.ie = TestIE(Fakendl())
 
     def test_ie_key(self):
         self.assertEqual(get_info_extractor(YoutubeIE.ie_key()), YoutubeIE)

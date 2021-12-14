@@ -242,7 +242,7 @@ class VevoIE(VevoBaseIE):
         )
 
         # Some videos are only available via webpage (e.g.
-        # https://github.com/ytdl-org/nextdl/issues/9366)
+        # https://github.com/nextdl/nextdl/issues/9366)
         if not video_versions:
             webpage = self._download_webpage(url, video_id)
             json_data = self._extract_json(webpage, video_id)

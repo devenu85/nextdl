@@ -96,7 +96,7 @@ class RadioCanadaIE(InfoExtractor):
                         return text
 
         # protectionType does not necessarily mean the video is DRM protected (see
-        # https://github.com/ytdl-org/nextdl/pull/18609).
+        # https://github.com/nextdl/nextdl/pull/18609).
         if get_meta("protectionType"):
             self.report_warning("This video is probably DRM protected.")
 

@@ -180,7 +180,7 @@ class FranceTVIE(InfoExtractor):
             ext = determine_ext(video_url)
             if ext == "f4m":
                 if georestricted:
-                    # See https://github.com/ytdl-org/nextdl/issues/3963
+                    # See https://github.com/nextdl/nextdl/issues/3963
                     # m3u8 urls work fine
                     continue
                 formats.extend(

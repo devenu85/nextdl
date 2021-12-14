@@ -49,7 +49,7 @@ def parseOpts(overrideArguments=None):
         except IOError:
             return default  # silently skip if file is not present
         try:
-            # FIXME: https://github.com/ytdl-org/nextdl/commit/dfe5fa49aed02cf36ba9f743b11b0903554b5e56
+            # FIXME: https://github.com/nextdl/nextdl/commit/dfe5fa49aed02cf36ba9f743b11b0903554b5e56
             contents = optionf.read()
             if sys.version_info < (3,):
                 contents = contents.decode(preferredencoding())

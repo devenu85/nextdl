@@ -52,9 +52,9 @@ class FileDownloader(object):
     _TEST_FILE_SIZE = 10241
     params = None
 
-    def __init__(self, ydl, params):
+    def __init__(self, ndl, params):
         """Create a FileDownloader object with the given options."""
-        self.ydl = ydl
+        self.ndl = ndl
         self._progress_hooks = []
         self.params = params
         self.add_progress_hook(self.report_progress)
@@ -141,22 +141,22 @@ class FileDownloader(object):
         return int(round(number * multiplier))
 
     def to_screen(self, *args, **kargs):
-        self.ydl.to_screen(*args, **kargs)
+        self.ndl.to_screen(*args, **kargs)
 
     def to_stderr(self, message):
-        self.ydl.to_screen(message)
+        self.ndl.to_screen(message)
 
     def to_console_title(self, message):
-        self.ydl.to_console_title(message)
+        self.ndl.to_console_title(message)
 
     def trouble(self, *args, **kargs):
-        self.ydl.trouble(*args, **kargs)
+        self.ndl.trouble(*args, **kargs)
 
     def report_warning(self, *args, **kargs):
-        self.ydl.report_warning(*args, **kargs)
+        self.ndl.report_warning(*args, **kargs)
 
     def report_error(self, *args, **kargs):
-        self.ydl.report_error(*args, **kargs)
+        self.ndl.report_error(*args, **kargs)
 
     def slow_down(self, start_time, now, byte_counter):
         """Sleep if the download speed is over the rate limit."""

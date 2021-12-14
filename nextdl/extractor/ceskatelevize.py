@@ -170,7 +170,7 @@ class CeskaTelevizeIE(InfoExtractor):
                             mpd_id="dash-%s" % format_id,
                             fatal=False,
                         )
-                    # See https://github.com/ytdl-org/nextdl/issues/12119#issuecomment-280037031
+                    # See https://github.com/nextdl/nextdl/issues/12119#issuecomment-280037031
                     if format_id == "audioDescription":
                         for f in stream_formats:
                             f["source_preference"] = -10

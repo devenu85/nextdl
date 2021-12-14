@@ -80,8 +80,8 @@ class TestHTTP(unittest.TestCase):
         if sys.version_info[0] == 3:
             return
 
-        ydl = nextdl({"logger": FakeLogger()})
-        r = ydl.extract_info("http://127.0.0.1:%d/302" % self.port)
+        ndl = nextdl({"logger": FakeLogger()})
+        r = ndl.extract_info("http://127.0.0.1:%d/302" % self.port)
         self.assertEqual(
             r["entries"][0]["url"], "http://127.0.0.1:%d/vid.mp4" % self.port
         )
@@ -103,15 +103,15 @@ class TestHTTPS(unittest.TestCase):
 
     def test_nocheckcertificate(self):
         if sys.version_info >= (2, 7, 9):  # No certificate checking anyways
-            ydl = nextdl({"logger": FakeLogger()})
+            ndl = nextdl({"logger": FakeLogger()})
             self.assertRaises(
                 Exception,
-                ydl.extract_info,
+                ndl.extract_info,
                 "https://127.0.0.1:%d/video.html" % self.port,
             )
 
-        ydl = nextdl({"logger": FakeLogger(), "nocheckcertificate": True})
-        r = ydl.extract_info("https://127.0.0.1:%d/video.html" % self.port)
+        ndl = nextdl({"logger": FakeLogger(), "nocheckcertificate": True})
+        r = ndl.extract_info("https://127.0.0.1:%d/video.html" % self.port)
         self.assertEqual(
             r["entries"][0]["url"], "https://127.0.0.1:%d/vid.mp4" % self.port
         )
@@ -155,29 +155,29 @@ class TestProxy(unittest.TestCase):
 
     def test_proxy(self):
         geo_proxy = "127.0.0.1:{0}".format(self.geo_port)
-        ydl = nextdl(
+        ndl = nextdl(
             {
                 "proxy": "127.0.0.1:{0}".format(self.port),
                 "geo_verification_proxy": geo_proxy,
             }
         )
         url = "http://foo.com/bar"
-        response = ydl.urlopen(url).read().decode("utf-8")
+        response = ndl.urlopen(url).read().decode("utf-8")
         self.assertEqual(response, "normal: {0}".format(url))
 
         req = compat_urllib_request.Request(url)
         req.add_header("nextdl-request-proxy", geo_proxy)
-        response = ydl.urlopen(req).read().decode("utf-8")
+        response = ndl.urlopen(req).read().decode("utf-8")
         self.assertEqual(response, "geo: {0}".format(url))
 
     def test_proxy_with_idn(self):
-        ydl = nextdl(
+        ndl = nextdl(
             {
                 "proxy": "127.0.0.1:{0}".format(self.port),
             }
         )
         url = "http://中文.tw/"
-        response = ydl.urlopen(url).read().decode("utf-8")
+        response = ndl.urlopen(url).read().decode("utf-8")
         # b'xn--fiq228c' is '中文'.encode('idna')
         self.assertEqual(response, "normal: http://xn--fiq228c.tw/")
 

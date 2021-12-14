@@ -1723,7 +1723,7 @@ class InfoExtractor(object):
             "Downloading f4m manifest",
             "Unable to download f4m manifest",
             # Some manifests may be malformed, e.g. prosiebensat1 generated manifests
-            # (see https://github.com/ytdl-org/nextdl/issues/6215#issuecomment-121704244)
+            # (see https://github.com/nextdl/nextdl/issues/6215#issuecomment-121704244)
             transform_source=transform_source,
             fatal=fatal,
             data=data,
@@ -1773,7 +1773,7 @@ class InfoExtractor(object):
             manifest_version = "2.0"
             media_nodes = manifest.findall("{http://ns.adobe.com/f4m/2.0}media")
         # Remove unsupported DRM protected media from final formats
-        # rendition (see https://github.com/ytdl-org/nextdl/issues/8573).
+        # rendition (see https://github.com/nextdl/nextdl/issues/8573).
         media_nodes = remove_encrypted_media(media_nodes)
         if not media_nodes:
             return formats
@@ -1971,8 +1971,8 @@ class InfoExtractor(object):
 
         # References:
         # 1. https://tools.ietf.org/html/draft-pantos-http-live-streaming-21
-        # 2. https://github.com/ytdl-org/nextdl/issues/12211
-        # 3. https://github.com/ytdl-org/nextdl/issues/18923
+        # 2. https://github.com/nextdl/nextdl/issues/12211
+        # 3. https://github.com/nextdl/nextdl/issues/18923
 
         # We should try extracting formats only from master playlists [1, 4.3.4],
         # i.e. playlists that describe available qualities. On the other hand
@@ -2677,7 +2677,7 @@ class InfoExtractor(object):
                             # First of, % characters outside $...$ templates
                             # must be escaped by doubling for proper processing
                             # by % operator string formatting used further (see
-                            # https://github.com/ytdl-org/nextdl/issues/16867).
+                            # https://github.com/nextdl/nextdl/issues/16867).
                             t = ""
                             in_template = False
                             for c in tmpl:
@@ -2702,7 +2702,7 @@ class InfoExtractor(object):
 
                         # @initialization is a regular template like @media one
                         # so it should be handled just the same way (see
-                        # https://github.com/ytdl-org/nextdl/issues/11605)
+                        # https://github.com/nextdl/nextdl/issues/11605)
                         if "initialization" in representation_ms_info:
                             initialization_template = prepare_template(
                                 "initialization",
@@ -2829,7 +2829,7 @@ class InfoExtractor(object):
                         elif "segment_urls" in representation_ms_info:
                             # Segment URLs with no SegmentTimeline
                             # Example: https://www.seznam.cz/zpravy/clanek/cesko-zasahne-vitr-o-sile-vichrice-muze-byt-i-zivotu-nebezpecny-39091
-                            # https://github.com/ytdl-org/nextdl/pull/14844
+                            # https://github.com/nextdl/nextdl/pull/14844
                             fragments = []
                             segment_duration = (
                                 float_or_none(
@@ -3106,7 +3106,7 @@ class InfoExtractor(object):
             re.findall(
                 # We only allow video|audio followed by a whitespace or '>'.
                 # Allowing more characters may end up in significant slow down (see
-                # https://github.com/ytdl-org/nextdl/issues/11979, example URL:
+                # https://github.com/nextdl/nextdl/issues/11979, example URL:
                 # http://www.porntrex.com/maps/videositemap.xml).
                 r"(?s)(<(?P<tag>%s)(?:\s+[^>]*)?>)(.*?)</(?P=tag)>"
                 % _MEDIA_TAG_NAME_RE,
@@ -3626,7 +3626,7 @@ class InfoExtractor(object):
         We will workaround this issue by resetting the cookie to
         the first one manually.
         1. https://new.vk.com/
-        2. https://github.com/ytdl-org/nextdl/issues/9841#issuecomment-227871201
+        2. https://github.com/nextdl/nextdl/issues/9841#issuecomment-227871201
         3. https://learning.oreilly.com/
         """
         for header, cookies in url_handle.headers.items():

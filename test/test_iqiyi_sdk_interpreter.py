@@ -9,7 +9,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from test.helper import FakeYDL
+from test.helper import Fakendl
 
 from nextdl.extractor import IqiyiIE
 
@@ -41,7 +41,7 @@ class TestIqiyiSDKInterpreter(unittest.TestCase):
         If `sign` is incorrect, /validate call throws an HTTP 556 error
         """
         logger = WarningLogger()
-        ie = IqiyiIEWithCredentials(FakeYDL({"logger": logger}))
+        ie = IqiyiIEWithCredentials(Fakendl({"logger": logger}))
         ie._login()
         self.assertTrue("unable to log in:" in logger.messages[0])
 

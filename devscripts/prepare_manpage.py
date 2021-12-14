@@ -12,7 +12,7 @@ PREFIX = r"""%nextdl(1)
 
 # NAME
 
-youtube\-dl \- download videos from youtube.com or other video platforms
+next\-dl \- download videos from youtube.com or other video platforms
 
 # SYNOPSIS
 

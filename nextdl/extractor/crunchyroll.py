@@ -113,7 +113,7 @@ class CrunchyrollBaseIE(InfoExtractor):
         # > This content may be inappropriate for some people.
         # > Are you sure you want to continue?
         # since it's not disabled by default in crunchyroll account's settings.
-        # See https://github.com/ytdl-org/nextdl/issues/7202.
+        # See https://github.com/nextdl/nextdl/issues/7202.
         qs["skip_wall"] = ["1"]
         return compat_urlparse.urlunparse(
             parsed_url._replace(query=compat_urllib_parse_urlencode(qs, True))
@@ -284,7 +284,7 @@ class CrunchyrollIE(CrunchyrollBaseIE, VRVIE):
             else sanitized_Request(url_or_request)
         )
         # Accept-Language must be set explicitly to accept any language to avoid issues
-        # similar to https://github.com/ytdl-org/nextdl/issues/6797.
+        # similar to https://github.com/nextdl/nextdl/issues/6797.
         # Along with IP address Crunchyroll uses Accept-Language to guess whether georestriction
         # should be imposed or not (from what I can see it just takes the first language
         # ignoring the priority and requires it to correspond the IP). By the way this causes

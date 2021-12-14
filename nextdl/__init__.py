@@ -29,7 +29,7 @@ from .utils import (DEFAULT_OUTTMPL, DateRange, DownloadError,
 def _real_main(argv=None):
     # Compatibility fixes for Windows
     if sys.platform == "win32":
-        # https://github.com/ytdl-org/nextdl/issues/820
+        # https://github.com/nextdl/nextdl/issues/820
         codecs.register(
             lambda name: codecs.lookup("utf-8") if name == "cp65001" else None
         )
@@ -383,7 +383,7 @@ def _real_main(argv=None):
         None if opts.match_filter is None else match_filter_func(opts.match_filter)
     )
 
-    ydl_opts = {
+    ndl_opts = {
         "usenetrc": opts.usenetrc,
         "username": opts.username,
         "password": opts.password,
@@ -508,21 +508,21 @@ def _real_main(argv=None):
         "usetitle": opts.usetitle if opts.usetitle is True else None,
     }
 
-    with nextdl(ydl_opts) as ydl:
+    with nextdl(ndl_opts) as ndl:
         # Update version
         if opts.update_self:
-            update_self(ydl.to_screen, opts.verbose, ydl._opener)
+            update_self(ndl.to_screen, opts.verbose, ndl._opener)
 
         # Remove cache dir
         if opts.rm_cachedir:
-            ydl.cache.remove()
+            ndl.cache.remove()
 
         # Maybe do nothing
         if (len(all_urls) < 1) and (opts.load_info_filename is None):
             if opts.update_self or opts.rm_cachedir:
                 sys.exit()
 
-            ydl.warn_if_short_id(sys.argv[1:] if argv is None else argv)
+            ndl.warn_if_short_id(sys.argv[1:] if argv is None else argv)
             parser.error(
                 "You must provide at least one URL.\n"
                 "Type nextdl --help to see a list of all options."
@@ -530,13 +530,13 @@ def _real_main(argv=None):
 
         try:
             if opts.load_info_filename is not None:
-                retcode = ydl.download_with_info_file(
+                retcode = ndl.download_with_info_file(
                     expand_path(opts.load_info_filename)
                 )
             else:
-                retcode = ydl.download(all_urls)
+                retcode = ndl.download(all_urls)
         except MaxDownloadsReached:
-            ydl.to_screen("--max-download limit reached, aborting.")
+            ndl.to_screen("--max-download limit reached, aborting.")
             retcode = 101
 
     sys.exit(retcode)

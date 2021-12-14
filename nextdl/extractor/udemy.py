@@ -467,7 +467,7 @@ class UdemyIE(InfoExtractor):
                     )
 
             # react rendition since 2017.04.15 (see
-            # https://github.com/ytdl-org/nextdl/issues/12744)
+            # https://github.com/nextdl/nextdl/issues/12744)
             data = self._parse_json(
                 self._search_regex(
                     r'videojs-setup-data=(["\'])(?P<data>{.+?})\1',

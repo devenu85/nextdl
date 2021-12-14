@@ -270,7 +270,7 @@ class KuwoSingerIE(InfoExtractor):
                 "title": "Ali",
             },
             "playlist_mincount": 95,
-            "skip": "Regularly stalls travis build",  # See https://travis-ci.org/ytdl-org/nextdl/jobs/78878540
+            "skip": "Regularly stalls travis build",  # See https://travis-ci.org/nextdl/nextdl/jobs/78878540
         },
     ]
 

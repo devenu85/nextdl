@@ -187,7 +187,7 @@ class InstagramIE(InfoExtractor):
                 dict,
             )
         # _sharedData.entry_data.PostPage is empty when authenticated (see
-        # https://github.com/ytdl-org/nextdl/pull/22880)
+        # https://github.com/nextdl/nextdl/pull/22880)
         if not media:
             additional_data = self._parse_json(
                 self._search_regex(

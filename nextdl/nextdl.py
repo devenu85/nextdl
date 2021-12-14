@@ -994,7 +994,7 @@ class nextdl(object):
             # url_transparent. In such cases outer metadata (from ie_result)
             # should be propagated to inner one (info). For this to happen
             # _type of info should be overridden with url_transparent. This
-            # fixes issue from https://github.com/ytdl-org/nextdl/pull/11163.
+            # fixes issue from https://github.com/nextdl/nextdl/pull/11163.
             if new_result.get("_type") == "url":
                 new_result["_type"] = "url_transparent"
 
@@ -1003,7 +1003,7 @@ class nextdl(object):
             )
         elif result_type in ("playlist", "multi_video"):
             # Protect from infinite recursion due to recursively nested playlists
-            # (see https://github.com/ytdl-org/nextdl/issues/27833)
+            # (see https://github.com/nextdl/nextdl/issues/27833)
             webpage_url = ie_result["webpage_url"]
             if webpage_url in self._playlist_urls:
                 self.to_screen(
@@ -1833,7 +1833,7 @@ class nextdl(object):
         # by extractor are incomplete or not (i.e. whether extractor provides only
         # video-only or audio-only formats) for proper formats selection for
         # extractors with such incomplete formats (see
-        # https://github.com/ytdl-org/nextdl/pull/5556).
+        # https://github.com/nextdl/nextdl/pull/5556).
         # Since formats may be filtered during format selection and may not match
         # the original formats the results may be incorrect. Thus original formats
         # or pre-calculated metrics should be passed to format selection routines
@@ -1841,7 +1841,7 @@ class nextdl(object):
         # We will pass a context object containing all necessary additional data
         # instead of just formats.
         # This fixes incorrect format selection issue (see
-        # https://github.com/ytdl-org/nextdl/issues/10083).
+        # https://github.com/nextdl/nextdl/issues/10083).
         incomplete_formats = (
             # All formats are video-only or
             all(
@@ -2089,7 +2089,7 @@ class nextdl(object):
                     if sub_info.get("data") is not None:
                         try:
                             # Use newline='' to prevent conversion of newline characters
-                            # See https://github.com/ytdl-org/nextdl/issues/10268
+                            # See https://github.com/nextdl/nextdl/issues/10268
                             with io.open(
                                 encodeFilename(sub_filename),
                                 "w",
@@ -2601,7 +2601,7 @@ class nextdl(object):
             return
 
         if type("") is not compat_str:
-            # Python 2.6 on SLES11 SP1 (https://github.com/ytdl-org/nextdl/issues/3326)
+            # Python 2.6 on SLES11 SP1 (https://github.com/nextdl/nextdl/issues/3326)
             self.report_warning(
                 "Your Python is broken! Update to a newer and supported version"
             )
@@ -2700,21 +2700,21 @@ class nextdl(object):
                 proxies = {"http": opts_proxy, "https": opts_proxy}
         else:
             proxies = compat_urllib_request.getproxies()
-            # Set HTTPS proxy to HTTP one if given (https://github.com/ytdl-org/nextdl/issues/805)
+            # Set HTTPS proxy to HTTP one if given (https://github.com/nextdl/nextdl/issues/805)
             if "http" in proxies and "https" not in proxies:
                 proxies["https"] = proxies["http"]
         proxy_handler = PerRequestProxyHandler(proxies)
 
         debuglevel = 1 if self.params.get("debug_printtraffic") else 0
         https_handler = make_HTTPS_handler(self.params, debuglevel=debuglevel)
-        ydlh = nextdlHandler(self.params, debuglevel=debuglevel)
+        ndlh = nextdlHandler(self.params, debuglevel=debuglevel)
         redirect_handler = nextdlRedirectHandler()
         data_handler = compat_urllib_request_DataHandler()
 
         # When passing our own FileHandler instance, build_opener won't add the
         # default FileHandler and allows us to disable the file protocol, which
         # can be used for malicious purposes (see
-        # https://github.com/ytdl-org/nextdl/issues/8227)
+        # https://github.com/nextdl/nextdl/issues/8227)
         file_handler = compat_urllib_request.FileHandler()
 
         def file_open(*args, **kwargs):
@@ -2728,7 +2728,7 @@ class nextdl(object):
             proxy_handler,
             https_handler,
             cookie_processor,
-            ydlh,
+            ndlh,
             redirect_handler,
             data_handler,
             file_handler,
@@ -2736,7 +2736,7 @@ class nextdl(object):
 
         # Delete the default user-agent header, which would otherwise apply in
         # cases where our custom HTTP handler doesn't come into play
-        # (See https://github.com/ytdl-org/nextdl/issues/1309 for details)
+        # (See https://github.com/nextdl/nextdl/issues/1309 for details)
         opener.addheaders = []
         self._opener = opener
 

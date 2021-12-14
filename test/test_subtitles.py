@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from test.helper import FakeYDL, md5
+from test.helper import Fakendl, md5
 
 from nextdl.extractor import (NPOIE, NRKTVIE, TEDIE, CeskaTelevizeIE,
                               ComedyCentralIE, DailymotionIE, DemocracynowIE,
@@ -22,7 +22,7 @@ class BaseTestSubtitles(unittest.TestCase):
     IE = None
 
     def setUp(self):
-        self.DL = FakeYDL()
+        self.DL = Fakendl()
         self.ie = self.IE()
         self.DL.add_info_extractor(self.ie)
 

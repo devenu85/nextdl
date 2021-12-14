@@ -1341,9 +1341,9 @@ From a Python program, you can embed nextdl in a more powerful fashion, like thi
 from __future__ import unicode_literals
 import nextdl
 
-ydl_opts = {}
-with nextdl.nextdl(ydl_opts) as ydl:
-    ydl.download(['https://www.youtube.com/watch?v=BaW_jenozKc'])
+ndl_opts = {}
+with nextdl.nextdl(ndl_opts) as ndl:
+    ndl.download(['https://www.youtube.com/watch?v=BaW_jenozKc'])
 ```
 
 Most likely, you'll want to use various options. For a list of options available, have a look at [`nextdl/nextdl.py`](https://github.com/nextdl/nextdl/blob/3e4cedf9e8cd3157df2457df7274d0c842421945/nextdl/nextdl.py#L137-L312). For a start, if you want to intercept nextdl's output, set a `logger` object.
@@ -1371,7 +1371,7 @@ def my_hook(d):
         print('Done downloading, now converting ...')
 
 
-ydl_opts = {
+ndl_opts = {
     'format': 'bestaudio/best',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
@@ -1381,8 +1381,8 @@ ydl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
 }
-with nextdl.nextdl(ydl_opts) as ydl:
-    ydl.download(['https://www.youtube.com/watch?v=BaW_jenozKc'])
+with nextdl.nextdl(ndl_opts) as ndl:
+    ndl.download(['https://www.youtube.com/watch?v=BaW_jenozKc'])
 ```
 
 # BUGS

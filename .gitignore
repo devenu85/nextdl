@@ -48,5 +48,7 @@ nextdl.zsh
 tmp/
 venv/
 
-# VS Code related files
-.vscode
+# IDE related files
+.vscode/
+.vs/
+.idea/

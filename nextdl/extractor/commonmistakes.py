@@ -39,7 +39,7 @@ class UnicodeBOMIE(InfoExtractor):
     _VALID_URL = r"(?P<bom>\ufeff)(?P<id>.*)$"
 
     # Disable test for python 3.2 since BOM is broken in re in this version
-    # (see https://github.com/ytdl-org/nextdl/issues/9751)
+    # (see https://github.com/nextdl/nextdl/issues/9751)
     _TESTS = (
         []
         if (3, 0) < sys.version_info <= (3, 3)

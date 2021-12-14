@@ -79,7 +79,7 @@ class AnvatoIE(InfoExtractor):
         "anvato_discovery_vodpoc_web_prod_688614983167a1af6cdf6d76343fda10a65223c1": "qRvRQCTVHd0VVOHsMvvfidyWmlYVrTbjby7WqIuK",
         "nbcu_cnbc_springfieldvod_ftv_stage_826040aad1925a46ac5dfb4b3c5143e648c6a30d": "JQaSb5a8Tz0PT4ti329DNmzDO30TnngTHmvX8Vua",
         "nbcu_cnbc_springfield_ftv_stage_826040aad1925a46ac5dfb4b3c5143e648c6a30d": "JQaSb5a8Tz0PT4ti329DNmzDO30TnngTHmvX8Vua",
-        "nbcu_nbcd_capture_web_stage_4dd9d585bfb984ebf856dee35db027b2465cc4ae": "0j1Ov4Vopyi2HpBZJYdL2m8ERJVGYh3nNpzPiO8F",
+        "nbcu_nbcd_capture_web_stage_4dd9d585bfb984ebf856dee35db027b2465cc4ae": "0j1Ov4Vopyi2HpBZJndl2m8ERJVGYh3nNpzPiO8F",
         "nbcu_nbcd_watch3_android_prod_7712ca5fcf1c22f19ec1870a9650f9c37db22dcf": "3LN2UB3rPUAMu7ZriWkHky9vpLMXYha8JbSnxBlx",
         "nbcu_nbcd_watchvod3_android_prod_0910a3a4692d57c0b5ff4316075bc5d096be45b9": "mJagcQ2II30vUOAauOXne7ERwbf5S9nlB3IP17lQ",
         "anvato_scripps_app_atv_prod_790deda22e16e71e83df58f880cd389908a45d52": "CB6trI1mpoDIM5o54DNTsji90NDBQPZ4z4RqBNSH",

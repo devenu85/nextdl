@@ -279,7 +279,7 @@ class F4mFD(FragmentFD):
         return media
 
     def _get_bootstrap_from_url(self, bootstrap_url):
-        bootstrap = self.ydl.urlopen(bootstrap_url).read()
+        bootstrap = self.ndl.urlopen(bootstrap_url).read()
         return read_bootstrap_info(bootstrap)
 
     def _update_live_fragments(self, bootstrap_url, latest_fragment):
@@ -320,11 +320,11 @@ class F4mFD(FragmentFD):
         requested_bitrate = info_dict.get("tbr")
         self.to_screen("[%s] Downloading f4m manifest" % self.FD_NAME)
 
-        urlh = self.ydl.urlopen(self._prepare_url(info_dict, man_url))
+        urlh = self.ndl.urlopen(self._prepare_url(info_dict, man_url))
         man_url = urlh.geturl()
         # Some manifests may be malformed, e.g. prosiebensat1 generated manifests
-        # (see https://github.com/ytdl-org/nextdl/issues/6215#issuecomment-121704244
-        # and https://github.com/ytdl-org/nextdl/issues/7823)
+        # (see https://github.com/nextdl/nextdl/issues/6215#issuecomment-121704244
+        # and https://github.com/nextdl/nextdl/issues/7823)
         manifest = fix_xml_ampersands(urlh.read().decode("utf-8", "ignore")).strip()
 
         doc = compat_etree_fromstring(manifest)
@@ -416,7 +416,7 @@ class F4mFD(FragmentFD):
                             # In tests, segments may be truncated, and thus
                             # FlvReader may not be able to parse the whole
                             # chunk. If so, write the segment as is
-                            # See https://github.com/ytdl-org/nextdl/issues/9214
+                            # See https://github.com/nextdl/nextdl/issues/9214
                             dest_stream.write(down_data)
                             break
                         raise

@@ -13,11 +13,11 @@ from .utils import expand_path, write_json_file
 
 
 class Cache(object):
-    def __init__(self, ydl):
-        self._ydl = ydl
+    def __init__(self, ndl):
+        self._ndl = ndl
 
     def _get_root_dir(self):
-        res = self._ydl.params.get("cachedir")
+        res = self._ndl.params.get("cachedir")
         if res is None:
             cache_root = compat_getenv("XDG_CACHE_HOME", "~/.cache")
             res = os.path.join(cache_root, "nextdl")
@@ -30,7 +30,7 @@ class Cache(object):
 
     @property
     def enabled(self):
-        return self._ydl.params.get("cachedir") is not False
+        return self._ndl.params.get("cachedir") is not False
 
     def store(self, section, key, data, dtype="json"):
         assert dtype in ("json",)
@@ -48,7 +48,7 @@ class Cache(object):
             write_json_file(data, fn)
         except Exception:
             tb = traceback.format_exc()
-            self._ydl.report_warning("Writing cache to %r failed: %s" % (fn, tb))
+            self._ndl.report_warning("Writing cache to %r failed: %s" % (fn, tb))
 
     def load(self, section, key, dtype="json", default=None):
         assert dtype in ("json",)
@@ -66,7 +66,7 @@ class Cache(object):
                     file_size = os.path.getsize(cache_fn)
                 except (OSError, IOError) as oe:
                     file_size = str(oe)
-                self._ydl.report_warning(
+                self._ndl.report_warning(
                     "Cache retrieval from %s failed (%s)" % (cache_fn, file_size)
                 )
         except IOError:
@@ -76,7 +76,7 @@ class Cache(object):
 
     def remove(self):
         if not self.enabled:
-            self._ydl.to_screen(
+            self._ndl.to_screen(
                 "Cache is disabled (Did you combine --no-cache-dir and --rm-cache-dir?)"
             )
             return
@@ -88,8 +88,8 @@ class Cache(object):
                 % cachedir
             )
 
-        self._ydl.to_screen("Removing cache dir %s ." % cachedir, skip_eol=True)
+        self._ndl.to_screen("Removing cache dir %s ." % cachedir, skip_eol=True)
         if os.path.exists(cachedir):
-            self._ydl.to_screen(".", skip_eol=True)
+            self._ndl.to_screen(".", skip_eol=True)
             shutil.rmtree(cachedir)
-        self._ydl.to_screen(".")
+        self._ndl.to_screen(".")

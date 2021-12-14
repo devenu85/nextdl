@@ -688,7 +688,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "url": "XgnwCQzjau8",
             "only_matching": True,
         },
-        # video_info is None (https://github.com/ytdl-org/nextdl/issues/4421)
+        # video_info is None (https://github.com/nextdl/nextdl/issues/4421)
         # YouTube Red ad is not captured for creator
         {
             "url": "__2ABJjxzNo",
@@ -709,7 +709,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 "DASH manifest missing",
             ],
         },
-        # Olympics (https://github.com/ytdl-org/nextdl/issues/4431)
+        # Olympics (https://github.com/nextdl/nextdl/issues/4431)
         {
             "url": "lqQg6PlCWgI",
             "info_dict": {
@@ -760,7 +760,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             },
             "skip": "This live event has ended.",
         },
-        # Extraction from multiple DASH manifests (https://github.com/ytdl-org/nextdl/pull/6097)
+        # Extraction from multiple DASH manifests (https://github.com/nextdl/nextdl/pull/6097)
         {
             "url": "https://www.youtube.com/watch?v=FIl7x6_3R5Y",
             "info_dict": {
@@ -863,10 +863,10 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             },
         },
         {
-            # Multifeed video with comma in title (see https://github.com/ytdl-org/nextdl/issues/8536)
-            "url": "https://www.youtube.com/watch?v=gVfLd0zydlo",
+            # Multifeed video with comma in title (see https://github.com/nextdl/nextdl/issues/8536)
+            "url": "https://www.youtube.com/watch?v=gVfLd0zndlo",
             "info_dict": {
-                "id": "gVfLd0zydlo",
+                "id": "gVfLd0zndlo",
                 "title": "DevConf.cz 2016 Day 2 Workshops 1 14:00 - 15:30",
             },
             "playlist_count": 2,
@@ -881,10 +881,10 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "only_matching": True,
         },
         {
-            # Title with JS-like syntax "};" (see https://github.com/ytdl-org/nextdl/issues/7468)
+            # Title with JS-like syntax "};" (see https://github.com/nextdl/nextdl/issues/7468)
             # Also tests cut-off URL expansion in video description (see
-            # https://github.com/ytdl-org/nextdl/issues/1892,
-            # https://github.com/ytdl-org/nextdl/issues/8164)
+            # https://github.com/nextdl/nextdl/issues/1892,
+            # https://github.com/nextdl/nextdl/issues/8164)
             "url": "https://www.youtube.com/watch?v=lsguqyKfVQg",
             "info_dict": {
                 "id": "lsguqyKfVQg",
@@ -907,7 +907,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             },
         },
         {
-            # Tags with '};' (see https://github.com/ytdl-org/nextdl/issues/7468)
+            # Tags with '};' (see https://github.com/nextdl/nextdl/issues/7468)
             "url": "https://www.youtube.com/watch?v=Ms7iBXnlUO8",
             "only_matching": True,
         },
@@ -976,7 +976,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "only_matching": True,
         },
         {
-            # YouTube Red paid video (https://github.com/ytdl-org/nextdl/issues/10059)
+            # YouTube Red paid video (https://github.com/nextdl/nextdl/issues/10059)
             "url": "https://www.youtube.com/watch?v=i1Ko8UG-Tdo",
             "only_matching": True,
         },
@@ -1157,8 +1157,8 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
         {
             # with '};' inside yt initial data (see [1])
             # see [2] for an example with '};' inside ytInitialPlayerResponse
-            # 1. https://github.com/ytdl-org/nextdl/issues/27093
-            # 2. https://github.com/ytdl-org/nextdl/issues/27216
+            # 1. https://github.com/nextdl/nextdl/issues/27093
+            # 2. https://github.com/nextdl/nextdl/issues/27216
             "url": "https://www.youtube.com/watch?v=CHqg6qOn4no",
             "info_dict": {
                 "id": "CHqg6qOn4no",
@@ -1183,7 +1183,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "only_matching": True,
         },
         {
-            # https://github.com/ytdl-org/nextdl/pull/28094
+            # https://github.com/nextdl/nextdl/pull/28094
             "url": "OtqTfy26tG0",
             "info_dict": {
                 "id": "OtqTfy26tG0",
@@ -1210,7 +1210,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "only_matching": True,
         },
         {
-            # restricted location, https://github.com/ytdl-org/nextdl/issues/28685
+            # restricted location, https://github.com/nextdl/nextdl/issues/28685
             "url": "cBvYw8_A0vQ",
             "info_dict": {
                 "id": "cBvYw8_A0vQ",
@@ -1523,7 +1523,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             "ext": "mp4",
             "format_note": "DASH video",
             "vcodec": "h264",
-        },  # Height can vary (https://github.com/ytdl-org/nextdl/issues/4559)
+        },  # Height can vary (https://github.com/nextdl/nextdl/issues/4559)
         "160": {
             "ext": "mp4",
             "height": 144,
@@ -2130,7 +2130,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                     "video_id": video_id,
                     "eurl": "https://youtube.googleapis.com/v/" + video_id,
                     "html5": 1,
-                    # See https://github.com/ytdl-org/nextdl/issues/29333#issuecomment-864049544
+                    # See https://github.com/nextdl/nextdl/issues/29333#issuecomment-864049544
                     "c": "TVHTML5",
                     "cver": "6.20180913",
                 },
@@ -2210,7 +2210,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                     for feed in multifeed_metadata_list.split(","):
                         # Unquote should take place before split on comma (,) since textual
                         # fields may contain comma as well (see
-                        # https://github.com/ytdl-org/nextdl/issues/8536)
+                        # https://github.com/nextdl/nextdl/issues/8536)
                         feed_data = compat_parse_qs(
                             compat_urllib_parse_unquote_plus(feed)
                         )
@@ -2977,7 +2977,7 @@ class YoutubeTabIE(YoutubeBaseInfoExtractor):
             "playlist_mincount": 21,
         },
         {
-            # https://github.com/ytdl-org/nextdl/issues/21844
+            # https://github.com/nextdl/nextdl/issues/21844
             "url": "https://www.youtube.com/playlist?list=PLzH6n4zXuckpfMu_4Ff8E7Z1behQks5ba",
             "info_dict": {
                 "title": "Data Analysis with Dr Mike Pound",
@@ -3855,7 +3855,7 @@ class YoutubePlaylistIE(InfoExtractor):
         {
             "url": "PLtPgu7CB4gbY9oDN3drwC3cMbJggS7dKl",
             "info_dict": {
-                "title": "YDL_safe_search",
+                "title": "ndl_safe_search",
                 "id": "PLtPgu7CB4gbY9oDN3drwC3cMbJggS7dKl",
             },
             "playlist_count": 2,

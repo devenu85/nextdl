@@ -57,12 +57,12 @@ def report_warning(message):
     sys.stderr.write(output)
 
 
-class FakeYDL(nextdl):
+class Fakendl(nextdl):
     def __init__(self, override=None):
         # Different instances of the downloader can't share the same dictionary
         # some test set the "sublang" parameter, which would break the md5 checks.
         params = get_params(override=override)
-        super(FakeYDL, self).__init__(params, auto_init=False)
+        super(Fakendl, self).__init__(params, auto_init=False)
         self.result = []
 
     def to_screen(self, s, skip_eol=None):
@@ -303,14 +303,14 @@ def assertEqual(self, got, expected, msg=None):
         self.assertTrue(got == expected, msg)
 
 
-def expect_warnings(ydl, warnings_re):
-    real_warning = ydl.report_warning
+def expect_warnings(ndl, warnings_re):
+    real_warning = ndl.report_warning
 
     def _report_warning(w):
         if not any(re.search(w_re, w) for w_re in warnings_re):
             real_warning(w)
 
-    ydl.report_warning = _report_warning
+    ndl.report_warning = _report_warning
 
 
 def http_server_port(httpd):

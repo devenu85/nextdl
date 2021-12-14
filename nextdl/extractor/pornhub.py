@@ -593,7 +593,7 @@ class PornHubPlaylistBaseIE(PornHubBaseIE):
     def _extract_entries(self, webpage, host):
         # Only process container div with main playlist content skipping
         # drop-down menu that uses similar pattern for videos (see
-        # https://github.com/ytdl-org/nextdl/issues/11594).
+        # https://github.com/nextdl/nextdl/issues/11594).
         container = self._search_regex(
             r'(?s)(<div[^>]+class=["\']container.+)',
             webpage,
@@ -648,7 +648,7 @@ class PornHubUserIE(PornHubPlaylistBaseIE):
         {
             # Unavailable via /videos page, but available with direct pagination
             # on pornstar page (see [1]), requires premium
-            # 1. https://github.com/ytdl-org/nextdl/issues/27853
+            # 1. https://github.com/nextdl/nextdl/issues/27853
             "url": "https://www.pornhubpremium.com/pornstar/sienna-west",
             "only_matching": True,
         },
@@ -715,7 +715,7 @@ class PornHubPagedPlaylistBaseIE(PornHubPlaylistBaseIE):
                 except ExtractorError as e:
                     # Some sources may not be available via /videos page,
                     # trying to fallback to main page pagination (see [1])
-                    # 1. https://github.com/ytdl-org/nextdl/issues/27853
+                    # 1. https://github.com/nextdl/nextdl/issues/27853
                     if is_404(e) and page_num == first_page and VIDEOS in base_url:
                         base_url = base_url.replace(VIDEOS, "")
                         webpage = download_page(base_url, page_num, fallback=True)

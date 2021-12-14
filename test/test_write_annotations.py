@@ -48,9 +48,9 @@ class TestAnnotations(unittest.TestCase):
             EXPECTED_ANNOTATIONS
         )  # Two annotations could have the same text.
         ie = nextdl.extractor.YoutubeIE()
-        ydl = nextdl(params)
-        ydl.add_info_extractor(ie)
-        ydl.download([TEST_ID])
+        ndl = nextdl(params)
+        ndl.add_info_extractor(ie)
+        ndl.download([TEST_ID])
         self.assertTrue(os.path.exists(ANNOTATIONS_FILE))
         annoxml = None
         with io.open(ANNOTATIONS_FILE, "r", encoding="utf-8") as annof:

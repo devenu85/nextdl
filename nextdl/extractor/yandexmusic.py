@@ -252,7 +252,7 @@ class YandexMusicPlaylistBaseIE(YandexMusicBaseIE):
                 track_id for track_id in track_ids if track_id not in present_track_ids
             ]
             # Request missing tracks in chunks to avoid exceeding max HTTP header size,
-            # see https://github.com/ytdl-org/nextdl/issues/27355
+            # see https://github.com/nextdl/nextdl/issues/27355
             _TRACKS_PER_CHUNK = 250
             for chunk_num in itertools.count(0):
                 start = chunk_num * _TRACKS_PER_CHUNK
@@ -397,7 +397,7 @@ class YandexMusicPlaylistIE(YandexMusicPlaylistBaseIE):
         },
         {
             # playlist exceeding the limit of 150 tracks (see
-            # https://github.com/ytdl-org/nextdl/issues/6666)
+            # https://github.com/nextdl/nextdl/issues/6666)
             "url": "https://music.yandex.ru/users/mesiaz/playlists/1364",
             "info_dict": {
                 "id": "1364",

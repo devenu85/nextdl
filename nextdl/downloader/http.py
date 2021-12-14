@@ -105,7 +105,7 @@ class HttpFD(FileDownloader):
             # Establish connection
             try:
                 try:
-                    ctx.data = self.ydl.urlopen(request)
+                    ctx.data = self.ndl.urlopen(request)
                 except (compat_urllib_error.URLError,) as err:
                     # reason may not be available, e.g. for urllib2.HTTPError on python 2.6
                     reason = getattr(err, "reason", None)
@@ -116,7 +116,7 @@ class HttpFD(FileDownloader):
                 # to match the value of requested Range HTTP header. This is due to a webservers
                 # that don't support resuming and serve a whole file with no Content-Range
                 # set in response despite of requested Range (see
-                # https://github.com/ytdl-org/nextdl/issues/6057#issuecomment-126129799)
+                # https://github.com/nextdl/nextdl/issues/6057#issuecomment-126129799)
                 if has_range:
                     content_range = ctx.data.headers.get("Content-Range")
                     if content_range:
@@ -154,7 +154,7 @@ class HttpFD(FileDownloader):
                     # Unable to resume (requested range not satisfiable)
                     try:
                         # Open the connection again without the range header
-                        ctx.data = self.ydl.urlopen(
+                        ctx.data = self.ndl.urlopen(
                             sanitized_Request(url, None, headers)
                         )
                         content_length = ctx.data.info()["Content-Length"]

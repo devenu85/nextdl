@@ -140,7 +140,7 @@ class FragmentFD(FileDownloader):
         self.to_screen("[%s] Total fragments: %s" % (self.FD_NAME, total_frags_str))
         self.report_destination(ctx["filename"])
         dl = HttpQuietDownloader(
-            self.ydl,
+            self.ndl,
             {
                 "continuedl": True,
                 "quiet": True,

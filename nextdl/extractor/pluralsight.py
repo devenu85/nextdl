@@ -386,7 +386,7 @@ query viewClip {
         )
 
         # Some courses also offer widescreen resolution for high quality (see
-        # https://github.com/ytdl-org/nextdl/issues/7766)
+        # https://github.com/nextdl/nextdl/issues/7766)
         widescreen = course.get("supportsWideScreenVideoFormats") is True
         best_quality = "high-widescreen" if widescreen else "high"
         if widescreen:
@@ -463,8 +463,8 @@ query viewClip {
 
                 # Pluralsight tracks multiple sequential calls to ViewClip API and start
                 # to return 429 HTTP errors after some time (see
-                # https://github.com/ytdl-org/nextdl/pull/6989). Moreover it may even lead
-                # to account ban (see https://github.com/ytdl-org/nextdl/issues/6842).
+                # https://github.com/nextdl/nextdl/pull/6989). Moreover it may even lead
+                # to account ban (see https://github.com/nextdl/nextdl/issues/6842).
                 # To somewhat reduce the probability of these consequences
                 # we will sleep random amount of time before each call to ViewClip.
                 self._sleep(
