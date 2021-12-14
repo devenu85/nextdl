@@ -1,3 +1,10 @@
+"""
+nextdl.postprocessor
+~~~~~~~~~~~~~~~~~~~~
+Postprocessing for nextdl.
+
+:copyright: 2021 nextdl
+"""
 from __future__ import unicode_literals
 
 from .embedthumbnail import EmbedThumbnailPP

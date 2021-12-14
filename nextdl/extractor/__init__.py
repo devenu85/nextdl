@@ -1,3 +1,11 @@
+"""
+nextdl.extractor
+~~~~~~~~~~~~~~~~
+Extracting for nextdl
+
+:copyright: 2021
+:license: MIT
+"""
 from __future__ import unicode_literals
 
 try:

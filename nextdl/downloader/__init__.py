@@ -1,3 +1,11 @@
+"""
+nextdl.downloader
+~~~~~~~~~~~~~~~~~
+Downloads videos for nextdl
+
+:copyright: 2021 nextdl
+:license: MIT
+"""
 from __future__ import unicode_literals
 
 from ..utils import determine_protocol
