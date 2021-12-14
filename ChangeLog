@@ -1,3 +1,7 @@
+version 2021.12.13
+
+* [nextdl] Made name and namespace from youtube_dl to nextdl.
+
 version 2021.06.06
 
 Extractors
