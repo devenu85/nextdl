@@ -4,7 +4,7 @@
 
 nextdl is a community fork of youtube-dl(yt-dl);
 
-We decided to fork it since the project has subsequently died, The last commit was july of 2021.
+We decided to fork it since the project has subsequently died
 
 - [INSTALLATION](#installation)
 - [DESCRIPTION](#description)
